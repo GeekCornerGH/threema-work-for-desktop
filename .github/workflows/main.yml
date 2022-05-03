@@ -20,7 +20,10 @@ jobs:
         name: Checkout the Threema-For-Desktop
         with:
           repository: GeekCornerGH/Threema-For-Desktop
-      
+      - name: Pull work repo
+	run: |
+	  git remote add work https://github.com/GeekCornerGH/threema-work-for-desktop
+	  git pull work src
       - name: Patch the package.json
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./package.json
@@ -57,14 +60,11 @@ jobs:
           sed -i "s/829374669000933432/970946433500995594/g" ./src/util/rpc.ts
       - name: Setup Git
         run: |
-         git config pull.ff only 
          git config --global user.name "github-actions"
          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Commit modifications
         run: |
           git commit -a -m "chore(Threema Work): Auto patching"
-      - name: Setup repo and push it
+      - name: Push repo
         run: |
-          git remote add work https://github.com/GeekCornerGH/threema-work-for-desktop
-          git pull work master
-          git push work master
+          git push work src
