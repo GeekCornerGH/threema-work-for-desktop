@@ -21,9 +21,9 @@ jobs:
         with:
           repository: GeekCornerGH/Threema-For-Desktop
       - name: Pull work repo
-	run: |
-	  git remote add work https://github.com/GeekCornerGH/threema-work-for-desktop
-	  git pull work src
+	      run: |
+	       git remote add work https://github.com/GeekCornerGH/threema-work-for-desktop
+	       git pull work src
       - name: Patch the package.json
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./package.json
