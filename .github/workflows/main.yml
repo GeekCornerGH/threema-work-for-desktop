@@ -57,6 +57,7 @@ jobs:
           sed -i "s/829374669000933432/970946433500995594/g" ./src/util/rpc.ts
       - name: Setup Git
         run: |
+         git config pull.ff only 
          git config --global user.name "github-actions"
          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Commit modifications
