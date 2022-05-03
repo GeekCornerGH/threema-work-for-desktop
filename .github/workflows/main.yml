@@ -1,0 +1,68 @@
+name: CD
+
+# Controls when the workflow will run
+on:
+  repository_dispatch:
+    types: [patch]
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v3
+        name: Checkout the Threema-For-Desktop
+        with:
+          repository: GeekCornerGH/Threema-For-Desktop
+      
+      - name: Patch the package.json
+        run: |
+          sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./package.json
+          sed -i "s/threema-desktop/threema-work-desktop/g" ./package.json
+      - name: Patch the build properties file
+        run: |
+          sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./build.js
+          sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./build.js
+          sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./build.js
+      - name: Patch index.ts file
+        run: |
+          sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./src/index.ts
+      - name: Patch preload.ts
+        run: |
+          sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./src/preload.ts
+          sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/preload.ts
+          sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/preload.ts
+      - name: Patch logo
+        run: |
+          curl -o ./src/assets/logo.png https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/threema-work-app-icon_1024.png
+          curl -o ./src/assets/tray.png https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/threema-work-app-icon_16.png
+      - name: Patch loader
+        run: |
+          sed -i "s/#05a63f/#0197ff/g" ./src/loader/style.css
+          sed -i "s/#323232/#004a7f/g" ./src/loader/style.css
+      - name: Patch menu
+        run: |
+          sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/util/menu.ts
+          sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/util/menu.ts
+      - name: Patch RPC
+        run: |
+          sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/util/rpc.ts
+          sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/util/rpc.ts
+          sed -i "s/829374669000933432/970946433500995594/g" ./src/util/rpc.ts
+      - name: Setup Git
+        run: |
+         git config --global user.name "github-actions"
+         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
+      - name: Commit modifications
+        run: |
+          git commit -a -m "chore(Threema Work): Auto patching"
+      - name: Setup repo and push it
+        run: |
+          git remote add work https://github.com/GeekCornerGH/threema-work-for-desktop
+          git push work
