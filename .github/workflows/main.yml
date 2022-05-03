@@ -65,4 +65,5 @@ jobs:
       - name: Setup repo and push it
         run: |
           git remote add work https://github.com/GeekCornerGH/threema-work-for-desktop
+          git pull work
           git push work
