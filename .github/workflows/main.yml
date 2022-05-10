@@ -64,7 +64,8 @@ jobs:
          git config --global user.name "github-actions"
          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Copy patches on the repo
-	run: cp -r $GITHUB_WORKSPACE/work/ .
+        run: |
+         cp -r $GITHUB_WORKSPACE/work/ .
       - name: Commit modifications
         run: |
           git commit -a -m "chore(Threema Work): Auto patching"
