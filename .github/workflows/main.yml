@@ -21,6 +21,8 @@ jobs:
         with:
           repository: GeekCornerGH/Threema-For-Desktop
           path: upstream
+      - name : Change directory
+        run: cd $GITHUB_WORKSPACE/upstream
       - name: Patch the package.json
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./package.json
