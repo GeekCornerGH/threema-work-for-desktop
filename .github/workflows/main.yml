@@ -85,4 +85,4 @@ jobs:
       - name: Push repo
         working-directory: ./work
         run: |
-          git push https://github.com/GeekCornerGH/Threema-For-Desktop src
+          git push https://github.com/GeekCornerGH/Threema-Work-For-Desktop src
