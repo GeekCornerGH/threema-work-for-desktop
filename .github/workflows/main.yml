@@ -21,26 +21,29 @@ jobs:
         with:
           repository: GeekCornerGH/Threema-For-Desktop
           path: upstream
-      - name : Change directory
-        run: cd $GITHUB_WORKSPACE/upstream
       - name: Patch the package.json
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./package.json
           sed -i "s/threema-desktop/threema-work-desktop/g" ./package.json
       - name: Patch the build properties file
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./build.js
           sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./build.js
           sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./build.js
       - name: Patch index.ts file
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./src/index.ts
       - name: Patch preload.ts
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           sed -i "s/threema-for-desktop/threema-work-for-desktop/g" ./src/preload.ts
           sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/preload.ts
           sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/preload.ts
       - name: Patch logo
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           curl -o ./src/assets/logo.png https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/threema-work-app-icon_1024.png
           curl -o ./src/assets/tray.png https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/threema-work-app-icon_16.png
@@ -49,10 +52,12 @@ jobs:
           sed -i "s/#05a63f/#0197ff/g" ./src/loader/style.css
           sed -i "s/#323232/#004a7f/g" ./src/loader/style.css
       - name: Patch menu
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/util/menu.ts
           sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/util/menu.ts
       - name: Patch RPC
+        working-directory: $GITHUB_WORKSPACE/upstream
         run: |
           sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/util/rpc.ts
           sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/util/rpc.ts
@@ -62,16 +67,21 @@ jobs:
         with:
           repository: GeekCornerGH/Threema-Work-For-Desktop
           ref: src
+          path: work
       - name: Setup Git
+        working-directory: $GITHUB_WORKSPACE/work
         run: |
          git config --global user.name "github-actions"
          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Copy patches on the repo
+        working-directory: $GITHUB_WORKSPACE
         run: |
-         cp -r $GITHUB_WORKSPACE/upstream/ $GITHUB_WORKSPACE
+         cp -r $GITHUB_WORKSPACE/ $GITHUB_WORKSPACE/work
       - name: Commit modifications
+        working-directory: $GITHUB_WORKSPACE/work
         run: |
           git commit -a -m "chore(Threema Work): Auto patching"
       - name: Push repo
+        working-directory: $GITHUB_WORKSPACE/work
         run: |
           git push https://github.com/GeekCornerGH/Threema-For-Desktop src
