@@ -63,6 +63,12 @@ jobs:
           sed -i "s/Threema-For-Desktop/Threema-Work-For-Desktop/g" ./src/util/rpc.ts
           sed -i "s/Threema For Desktop/Threema Work For Desktop/g" ./src/util/rpc.ts
           sed -i "s/829374669000933432/970946433500995594/g" ./src/util/rpc.ts
+      - name: Patch build assets
+        working-directory: ./upstream
+        run: |
+          curl -o ./build-assets/icon.png https://github.com/GeekCornerGH/threema-work-for-desktop/blob/assets/icon.png?raw=true
+          curl -o ./build-assets/background.png https://github.com/GeekCornerGH/threema-work-for-desktop/blob/assets/background.png?raw?true
+          curl -o ./build-assets/installerSidebar.bmp https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/installerSidebar.bmp
       - uses: actions/checkout@v3
         name: Checkout the Threema-Work-For-Desktop repo
         with:
