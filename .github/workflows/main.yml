@@ -48,6 +48,7 @@ jobs:
           curl -o ./src/assets/logo.png https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/threema-work-app-icon_1024.png
           curl -o ./src/assets/tray.png https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/threema-work-app-icon_16.png
       - name: Patch loader
+        working-directory: ./upstream
         run: |
           sed -i "s/#05a63f/#0197ff/g" ./src/loader/style.css
           sed -i "s/#323232/#004a7f/g" ./src/loader/style.css
