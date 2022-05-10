@@ -1,0 +1,16 @@
+{
+	"compilerOptions": {
+		"outDir": "build-js",
+		"module": "CommonJS",
+		"target": "ES2020",
+		"removeComments": true,
+		"resolveJsonModule": true
+	},
+	"exclude": [
+		"node_modules",
+		"build-ts"
+	],
+	"include": [
+		"src"
+	],
+}
