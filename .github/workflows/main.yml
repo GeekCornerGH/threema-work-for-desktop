@@ -76,7 +76,8 @@ jobs:
          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
       - name: Copy patches on the repo
         run: |
-         cp -r ./upstream/ ./work
+         rm -rf ./upstream/.git
+         cp -r ./upstream/. ./work
       - name: Commit modifications
         working-directory: ./work
         run: |
