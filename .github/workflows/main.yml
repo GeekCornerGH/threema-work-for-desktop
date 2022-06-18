@@ -1,4 +1,4 @@
-name: CD
+name: Deployer
 
 # Controls when the workflow will run
 on:
