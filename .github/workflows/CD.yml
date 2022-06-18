@@ -30,8 +30,6 @@ jobs:
           echo "node-linker=hoisted" >> .npmrc
       - name: Install dependances to see if there is any issue
         run: pnpm install --frozen-lockfile
-      - name: Liniting files
-        run: pnpm lint:fix
       - name: Building TypeScript to JavaScript
         run: pnpm tsc
       - name: Running build of app
