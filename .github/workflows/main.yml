@@ -16,7 +16,7 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
         name: Checkout the Threema-For-Desktop
         with:
           repository: GeekCornerGH/Threema-For-Desktop
@@ -69,7 +69,7 @@ jobs:
           curl -o ./build-assets/icon.png https://github.com/GeekCornerGH/threema-work-for-desktop/blob/assets/icon.png?raw=true
           curl -o ./build-assets/background.png https://github.com/GeekCornerGH/threema-work-for-desktop/blob/assets/background.png?raw?true
           curl -o ./build-assets/installerSidebar.bmp https://raw.githubusercontent.com/GeekCornerGH/threema-work-for-desktop/assets/installerSidebar.bmp
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v1
         name: Checkout the Threema-Work-For-Desktop repo
         with:
           repository: GeekCornerGH/Threema-Work-For-Desktop
