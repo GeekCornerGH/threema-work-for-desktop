@@ -22,7 +22,7 @@ jobs:
         with:
           version: latest
       - name: Cloning and checking the repository with Git
-        uses: actions/checkout@v3
+        uses: actions/checkout@v1
         with:
           ref: src
       - name: Inject metadata in npmrc
