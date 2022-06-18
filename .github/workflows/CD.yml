@@ -2,8 +2,6 @@ name: Threema Work For Desktop CD
 
 on:
   push:
-      branches:
-        - 'src'
   workflow_dispatch:
 jobs:
   CD:
