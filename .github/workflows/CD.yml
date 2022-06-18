@@ -23,6 +23,8 @@ jobs:
           version: latest
       - name: Cloning and checking the repository with Git
         uses: actions/checkout@v3
+        with:
+          ref: src
       - name: Inject metadata in npmrc
         run: |
           echo "node-linker=hoisted" >> .npmrc
