@@ -1,6 +1,6 @@
 {
     "name": "threema-work-desktop",
-    "version": "2.4.0",
+    "version": "2.5.0",
     "description": "Threema for Desktop",
     "main": "build-js/index.js",
     "scripts": {
@@ -16,21 +16,18 @@
     "dependencies": {
         "discord-rpc-patch": "^4.0.1",
         "electron-localshortcut": "^3.2.1",
-        "electron-windows-caption-color": "^2.0.0",
         "node-fetch": "^2.6.7",
         "path": "^0.12.7"
     },
     "devDependencies": {
-        "@babel/cli": "^7.17.6",
-        "@babel/core": "^7.17.8",
         "@types/electron-localshortcut": "3.1.0",
-        "@typescript-eslint/eslint-plugin": "5.23.0",
-        "@typescript-eslint/parser": "5.23.0",
+        "@typescript-eslint/eslint-plugin": "5.28.0",
+        "@typescript-eslint/parser": "5.28.0",
         "copyfiles": "2.4.1",
-        "electron": "18.2.0",
+        "electron": "19.0.4",
         "electron-builder": "23.0.3",
-        "eslint": "8.15.0",
-        "typescript": "4.6.4"
+        "eslint": "8.18.0",
+        "typescript": "4.7.4"
     },
     "repository": {
         "type": "git",
